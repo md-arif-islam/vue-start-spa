@@ -21,3 +21,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.emphasize {
+  text-decoration: underline !important;
+}
+</style>

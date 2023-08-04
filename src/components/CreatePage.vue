@@ -13,7 +13,7 @@
               type="text"
               class="form-control"
               rows="5"
-              v-model="pageContent"
+              v-model="content"
             ></textarea>
           </div>
         </div>
@@ -53,36 +53,31 @@ export default {
   computed: {
     isFormInvalid() {
       return (
-        !this.pageTitle || !this.pageContent || !this.linkText || !this.linkUrl
+        !this.pageTitle || !this.content || !this.linkText || !this.linkUrl
       );
     },
   },
   data() {
     return {
       pageTitle: "",
-      pageContent: "",
+      content: "",
       linkText: "",
       linkUrl: "",
     };
   },
   methods: {
     submitForm(e) {
-      if (
-        !this.pageTitle ||
-        !this.pageContent ||
-        !this.linkText ||
-        !this.linkUrl
-      ) {
+      if (!this.pageTitle || !this.content || !this.linkText || !this.linkUrl) {
         alert("Please fill the form!");
         return;
       }
 
       this.pageCreated({
         pageTitle: this.pageTitle,
-        pageContent: this.pageContent,
+        content: this.content,
         link: {
-          linkText: this.linkText,
-          linkUrl: this.linkUrl,
+          text: this.linkText,
+          url: this.linkUrl,
         },
       });
     },

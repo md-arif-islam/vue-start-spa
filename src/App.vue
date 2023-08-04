@@ -34,16 +34,13 @@ export default {
 
   methods: {
     async getPages() {
-      try {
-        let res = await fetch("pages.json");
-        let data = await res.json();
-        this.pages = data;
-      } catch (error) {
-        console.error("Error fetching pages:", error);
-      }
+      let res = await fetch("pages.json");
+      let data = await res.json();
+      this.pages = data;
     },
+
     pageCreated(pageObj) {
-      console.log(pageObj);
+      this.pages.push(pageObj);
     },
   },
 };

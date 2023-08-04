@@ -41,7 +41,10 @@
 </template>
 
 <script>
+import NavbarLink from "./NavbarLink.vue";
+
 export default {
+  components: { NavbarLink },
   props: ["pages", "activePage", "navLinkClick"],
 
   data() {

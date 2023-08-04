@@ -28,7 +28,11 @@
           </div>
           <div class="mb-3">
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" />
+              <input
+                type="checkbox"
+                class="form-check-input"
+                v-model="published"
+              />
               <label for="" class="form-check-label">Publish</label>
             </div>
           </div>
@@ -63,6 +67,7 @@ export default {
       content: "",
       linkText: "",
       linkUrl: "",
+      published: false,
     };
   },
   methods: {
@@ -79,7 +84,14 @@ export default {
           text: this.linkText,
           url: this.linkUrl,
         },
+        published: this.published,
       });
+
+      this.pageTitle = "";
+      this.content = "";
+      this.linkText = "";
+      this.linkUrl = "";
+      this.published = false;
     },
   },
 };

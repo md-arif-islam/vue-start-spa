@@ -21,14 +21,11 @@
               class="nav-item active"
               :key="index"
             >
-              <a
-                class="nav-link"
-                :class="{ active: activePage == index }"
-                :title="`This link goes to ${page.link.text} page`"
-                :href="page.link.url"
+              <navbar-link
+                :page="page"
+                :isActive="activePage === index"
                 @click.prevent="navLinkClick(index)"
-                >{{ page.link.text }}
-              </a>
+              ></navbar-link>
             </li>
           </ul>
 

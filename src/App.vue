@@ -5,7 +5,7 @@
     :nav-link-click="(index) => (activePage = index)"
   ></navbar>
 
-  <page-viewer :page="pages[activePage]"></page-viewer>
+  <page-viewer v-if="pages.length > 0" :page="pages[activePage]"></page-viewer>
 </template>
 
 <script>
@@ -17,27 +17,28 @@ export default {
     Navbar,
     PageViewer,
   },
+
+  created() {
+    this.getPages();
+  },
+
   data() {
     return {
       activePage: 0,
-      pages: [
-        {
-          link: { text: "Home", url: "index.html" },
-          pageTitle: "Home Page",
-          content: "This is Home page",
-        },
-        {
-          link: { text: "About", url: "about.html" },
-          pageTitle: "About Page",
-          content: "This is About page",
-        },
-        {
-          link: { text: "Contact", url: "contact.html" },
-          pageTitle: "Contact Page",
-          content: "This is Contact page",
-        },
-      ],
+      pages: [],
     };
+  },
+
+  methods: {
+    async getPages() {
+      try {
+        let res = await fetch("pages.json");
+        let data = await res.json();
+        this.pages = data;
+      } catch (error) {
+        console.error("Error fetching pages:", error);
+      }
+    },
   },
 };
 </script>

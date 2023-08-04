@@ -1,6 +1,12 @@
 <template>
   <div>
-    <nav :class="[`navbar-${theme}`, `bg-${theme}`, `navbar navbar-expand-lg`]">
+    <nav
+      :class="[
+        `navbar-${theme}`,
+        `bg-${theme}`,
+        `navbar navbar-expand-lg mb-5`,
+      ]"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Vue 3</a>
         <button
